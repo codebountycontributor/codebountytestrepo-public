@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Car Listings Search</title>
+    <style>
+      body { font-family: Arial, sans-serif; padding: 20px; }
+      input, select { margin: 4px 0; padding: 6px; }
+      .card { border: 1px solid #ddd; padding: 10px; margin: 8px 0; }
+    </style>
+  </head>
+  <body>
+    <h1>Car Listings Search 🔎</h1>
+
+    <div>
+      <input id="q" placeholder="Search make, model, description" style="width:60%" />
+      <select id="sortBy">
+        <option value="">Sort</option>
+        <option value="priceAsc">Price ↑</option>
+        <option value="priceDesc">Price ↓</option>
+        <option value="yearDesc">Year ↓</option>
+        <option value="yearAsc">Year ↑</option>
+      </select>
+      <button id="search">Search</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+      async function search() {
+        const q = document.getElementById('q').value;
+        const sortBy = document.getElementById('sortBy').value;
+        const url = `/api/search?q=${encodeURIComponent(q)}&sortBy=${encodeURIComponent(sortBy)}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        const container = document.getElementById('results');
+        container.innerHTML = `<p>Found ${data.total} result(s)</p>`;
+        data.results.forEach(car => {
+          const div = document.createElement('div');
+          div.className = 'card';
+          div.innerHTML = `<strong>${car.year} ${car.make} ${car.model}</strong> — $${car.price}<br/>${car.description}`;
+          container.appendChild(div);
+        });
+      }
+
+      document.getElementById('search').addEventListener('click', search);
+      // quick search on enter
+      document.getElementById('q').addEventListener('keypress', (e) => { if (e.key === 'Enter') search(); });
+
+      // initial load
+      search();
+    </script>
+  </body>
+</html>
