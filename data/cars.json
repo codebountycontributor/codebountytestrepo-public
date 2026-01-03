@@ -1,12 +1,12 @@
 [
-  {"id":1,"make":"Toyota","model":"Camry","year":2018,"price":17000,"mileage":40000,"color":"silver","description":"Reliable midsize sedan"},
-  {"id":2,"make":"Honda","model":"Civic","year":2019,"price":16000,"mileage":35000,"color":"white","description":"Fuel efficient compact"},
-  {"id":3,"make":"Ford","model":"F-150","year":2017,"price":25000,"mileage":60000,"color":"blue","description":"Popular full-size truck"},
-  {"id":4,"make":"Tesla","model":"Model 3","year":2021,"price":35000,"mileage":15000,"color":"red","description":"Electric sedan with Autopilot"},
-  {"id":5,"make":"BMW","model":"3 Series","year":2016,"price":18000,"mileage":55000,"color":"black","description":"Luxury compact"},
-  {"id":6,"make":"Toyota","model":"Corolla","year":2020,"price":14000,"mileage":20000,"color":"gray","description":"Compact and reliable"},
-  {"id":7,"make":"Honda","model":"Accord","year":2015,"price":12000,"mileage":80000,"color":"silver","description":"Comfortable family sedan"},
-  {"id":8,"make":"Chevrolet","model":"Malibu","year":2018,"price":15000,"mileage":42000,"color":"white","description":"Comfortable and economical"},
-  {"id":9,"make":"Audi","model":"A4","year":2019,"price":28000,"mileage":30000,"color":"black","description":"Premium compact executive car"},
-  {"id":10,"make":"Subaru","model":"Outback","year":2018,"price":22000,"mileage":45000,"color":"green","description":"All-wheel-drive wagon"}
-]
+  {"id":1,"make":"Toyota","model":"Camry","year":2018,"price":17000,"mileage":40000,"color":"silver","description":"Reliable midsize sedan","lat":34.0522,"lon":-118.2437},
+  {"id":2,"make":"Honda","model":"Civic","year":2019,"price":16000,"mileage":35000,"color":"white","description":"Fuel efficient compact","lat":37.7749,"lon":-122.4194},
+  {"id":3,"make":"Ford","model":"F-150","year":2017,"price":25000,"mileage":60000,"color":"blue","description":"Popular full-size truck","lat":32.7767,"lon":-96.7970},
+  {"id":4,"make":"Tesla","model":"Model 3","year":2021,"price":35000,"mileage":15000,"color":"red","description":"Electric sedan with Autopilot","lat":37.5483,"lon":-121.9886},
+  {"id":5,"make":"BMW","model":"3 Series","year":2016,"price":18000,"mileage":55000,"color":"black","description":"Luxury compact","lat":40.7128,"lon":-74.0060},
+  {"id":6,"make":"Toyota","model":"Corolla","year":2020,"price":14000,"mileage":20000,"color":"gray","description":"Compact and reliable","lat":47.6062,"lon":-122.3321},
+  {"id":7,"make":"Honda","model":"Accord","year":2015,"price":12000,"mileage":80000,"color":"silver","description":"Comfortable family sedan","lat":41.8781,"lon":-87.6298},
+  {"id":8,"make":"Chevrolet","model":"Malibu","year":2018,"price":15000,"mileage":42000,"color":"white","description":"Comfortable and economical","lat":25.7617,"lon":-80.1918},
+  {"id":9,"make":"Audi","model":"A4","year":2019,"price":28000,"mileage":30000,"color":"black","description":"Premium compact executive car","lat":42.3601,"lon":-71.0589},
+  {"id":10,"make":"Subaru","model":"Outback","year":2018,"price":22000,"mileage":45000,"color":"green","description":"All-wheel-drive wagon","lat":39.7392,"lon":-104.9903}
+

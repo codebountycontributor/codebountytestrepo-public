@@ -21,8 +21,16 @@
         <option value="priceDesc">Price ↓</option>
         <option value="yearDesc">Year ↓</option>
         <option value="yearAsc">Year ↑</option>
+        <option value="distanceAsc">Distance ↑</option>
+        <option value="distanceDesc">Distance ↓</option>
       </select>
       <button id="search">Search</button>
+    </div>
+
+    <div style="margin-top:8px;">
+      <label>Lat: <input id="lat" placeholder="latitude" style="width:120px" /></label>
+      <label>Lon: <input id="lon" placeholder="longitude" style="width:120px" /></label>
+      <button id="locate">Use my location</button>
     </div>
 
     <div id="results"></div>
@@ -31,7 +39,11 @@
       async function search() {
         const q = document.getElementById('q').value;
         const sortBy = document.getElementById('sortBy').value;
-        const url = `/api/search?q=${encodeURIComponent(q)}&sortBy=${encodeURIComponent(sortBy)}`;
+        const lat = document.getElementById('lat').value;
+        const lon = document.getElementById('lon').value;
+        let url = `/api/search?q=${encodeURIComponent(q)}&sortBy=${encodeURIComponent(sortBy)}`;
+        if (lat) url += `&lat=${encodeURIComponent(lat)}`;
+        if (lon) url += `&lon=${encodeURIComponent(lon)}`;
         const res = await fetch(url);
         const data = await res.json();
         const container = document.getElementById('results');
@@ -39,7 +51,8 @@
         data.results.forEach(car => {
           const div = document.createElement('div');
           div.className = 'card';
-          div.innerHTML = `<strong>${car.year} ${car.make} ${car.model}</strong> — $${car.price}<br/>${car.description}`;
+          const distanceDisplay = car.distance ? ` — ${Number(car.distance).toFixed(1)} mi away` : '';
+          div.innerHTML = `<strong>${car.year} ${car.make} ${car.model}</strong> — $${car.price}${distanceDisplay}<br/>${car.description}`;
           container.appendChild(div);
         });
       }
@@ -47,6 +60,14 @@
       document.getElementById('search').addEventListener('click', search);
       // quick search on enter
       document.getElementById('q').addEventListener('keypress', (e) => { if (e.key === 'Enter') search(); });
+
+      document.getElementById('locate').addEventListener('click', () => {
+        if (!navigator.geolocation) return alert('Geolocation not supported');
+        navigator.geolocation.getCurrentPosition(pos => {
+          document.getElementById('lat').value = pos.coords.latitude;
+          document.getElementById('lon').value = pos.coords.longitude;
+        }, err => alert('Unable to get location: ' + err.message));
+      });
 
       // initial load
       search();
